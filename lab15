@@ -1,17 +1,29 @@
 #include <stdio.h>
-
-void printDigit(int n){
-    int digit = n%10;
-    if(n/10!=0){
-        printDigit(n/10);
+#include <string.h>
+void Normal(int k){
+    int number = k%10;
+    if(k/10!=0){
+        Normal(k/10);
     }
-    printf("%d ", digit);
+    printf("%d ", number);
 }
-void printDigitReverse(int n){
-    int digit = n%10;
-    printf("%d ", digit);
-    if(n/10!=0){
-        printDigitReverse(n/10);
+void UNnormal(int k){
+    int number = k%10;
+    printf("%d ", number);
+    if(k/10!=0){
+        UNnormal(k/10);
+    }
+}
+void Reverse1(char str[100]){
+    int len = strlen(str);
+    for(int i=0; i<len; i++){
+        printf("%c ", str[i]);
+    } 
+}
+void Reverse2(char str[100]){
+    int len = strlen(str);
+    for(int i=len-1; i>=0; i--){
+        printf("%c ", str[i]);
     }
 }
 int main(){
@@ -21,11 +33,23 @@ int main(){
     scanf("%d", &N);
 
     printf("Первое:");
-    printDigit(N);
+    Normal(N);
     printf("\n");
 
     printf("Второе:");
-    printDigitReverse(N);
+    UNnormal(N);
+
+    char str[50];
+    printf("Введите строку:");
+    scanf("%s", str);
+
+    printf("Первое:");
+    Reverse1(str);
+    printf("\n");
+    
+    printf("Второе:");
+    Reverse2(str);
+    printf("\n");
 
     return 0;
 }
